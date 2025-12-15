@@ -1,15 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
 import SearchInput from "../ui/SearchInput";
 import Avatar from "../ui/Avatar";
 import { Link } from "react-router-dom";
 import { IoMdNotificationsOutline } from "react-icons/io";
 import { AiOutlineSetting } from "react-icons/ai";
+import ToggleMenuBtn from "../ui/ToggleMenuBtn";
+import Drawer from "../ui/Drawer";
+import MenuItems from "./MenuItems";
+import { menuItems } from "../lib/data";
 
 function Header() {
+  const [openDrawer, setOpenDrawer] = useState(false);
   return (
     <div className="bg-white container p-3 max-w-7xl">
-      <div className=" px-5 flex justify-between items-center">
-        <SearchInput />
+      <div className=" px-5  flex justify-between items-center">
+        <div className="flex justify-center items-center gap-x-3">
+          <button
+            onClick={() => setOpenDrawer(!openDrawer)}
+            className="md:hidden block p-3  icon-button cursor-pointer"
+          >
+            <ToggleMenuBtn open={openDrawer} />
+          </button>
+          <Drawer open={openDrawer} onClose={() => setOpenDrawer(false)}>
+            <MenuItems
+              open={openDrawer}
+              setOpen={setOpenDrawer}
+              menu={menuItems}
+            />
+          </Drawer>
+          <SearchInput />
+        </div>
+
         <div className="flex  space-x-2">
           <div className="flex justify-center items-center gap-x-2">
             <Link to={"/notifications"} className="icon-button relative">

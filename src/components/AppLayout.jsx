@@ -1,12 +1,16 @@
 import { Outlet } from "react-router-dom";
 import Header from "./Header";
+import { useEffect } from "react";
+import ToggleMenuBtn from "../ui/ToggleMenuBtn";
 
 function AppLayout({ children }) {
   return (
-    <div className="grid h-screen grid-rows-[auto_1fr] grid-cols-[auto_1fr]  ">
-      <div className="border-l border-gray-100 row-span-2 overflow-y-auto">
+    <div className="grid h-screen grid-rows-[auto_1fr] grid-cols-[auto_1fr]">
+      {/*⬇︎ منو در حالت تبلت و دستکتاب */}
+      <div className="border-l  border-gray-100 row-span-2 overflow-y-auto">
         {children}
       </div>
+
       <div className="border-b border-gray-100">
         <Header />
       </div>
