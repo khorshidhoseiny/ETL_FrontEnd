@@ -18,12 +18,14 @@ export const menuItems = [
   {
     id: "data-extraction",
     title: "استخراج داده",
+    link: "/dashboard/data-extraction",
     icon: MdOutlineDataThresholding,
     submenu: null,
   },
   {
     id: "data-transformation",
     title: "تبدیل و پردازش داده",
+    // link:""
     icon: MdSettings,
     submenu: null,
   },

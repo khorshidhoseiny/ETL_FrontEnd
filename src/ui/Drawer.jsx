@@ -14,13 +14,13 @@ function Drawer({ open, onClose, children }) {
     <>
       <div
         className={`backdrop-blur-sm  fixed inset-0 w-full h-screen bg-secondary-800 bg-opacity-30  ${
-          open ? "block" : "pointer-events-none hidden"
+          open ? "opacity-100 " : "pointer-events-none opacity-0 "
         }`}
         onClick={onClose}
       ></div>
 
       <div
-        className={`fixed top-0 right-0 w-62.5 h-full transition-transform bg-white/95 transform ${
+        className={`fixed top-0 right-0 shadow bg-white/95 w-[85vw] max-w-70 h-full transition-transform transform ${
           open ? "translate-x-0" : "translate-x-full"
         }`}
         onClick={(event) => {
@@ -28,7 +28,7 @@ function Drawer({ open, onClose, children }) {
           event.stopPropagation();
         }}
       >
-        <div className="bg-secondary-0 max-h-full overflow-y-auto">
+        <div className="bg-secondary-0 max-h-full relative overflow-y-auto">
           {children}
         </div>
       </div>

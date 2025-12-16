@@ -1,14 +1,11 @@
 import { useState } from "react";
-import Accordion from "../ui/Accordion";
 import ToggleMenuBtn from "../ui/ToggleMenuBtn";
 import useIsMobile from "../hooks/useIsMobile";
 import MenuItems from "./MenuItems";
 
 export default function SidebarMenu({ menu }) {
   const ismobile = useIsMobile(768);
-
   const [open, setOpen] = useState(false);
-
   return (
     <div className="flex items-start">
       {/* //? just in md and grater than screen */}
@@ -28,7 +25,10 @@ export default function SidebarMenu({ menu }) {
                 alt=""
               />
               <h1 className=" font-semibold text-primary-700">
-                {/* ApplyWisely */}ETL
+                ETL
+                <span className="w-12 h-12 ml-2 p-2 mr-7 rounded-lg bg-gray-300 text-sm text-gray-500">
+                  logo
+                </span>
               </h1>
             </div>
             <button

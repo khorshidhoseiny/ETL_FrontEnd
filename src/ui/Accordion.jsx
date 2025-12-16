@@ -16,26 +16,33 @@ function Accordion({ open, item }) {
     <>
       <div
         onClick={() => toggleMenu(item.id)}
-        className={`flex rounded-lg w-full hover:bg-gray-100  items-center gap-x-2 p-2 ${
-          open ? "justify-between" : "justify-center"
-        }  cursor-pointer`}
+        className={`flex rounded-lg w-full hover:bg-gray-100 relative  items-center gap-x-2 p-2   cursor-pointer`}
       >
-        <div className="flex gap-x-2  items-center">
-          <Icon className="w-5 h-5 fill-gray-600" />
+        <div
+          className={`flex ${
+            open ? "justify-between" : "justify-center"
+          } w-full items-center `}
+        >
+          <div className="flex gap-x-2 relative items-center">
+            <Icon className="w-5 h-5 fill-gray-600" />
+            <span
+              className={`text-sm text-gray-600 ${open ? "block" : "hidden"} `}
+            >
+              {item.title}
+            </span>
+          </div>
+          {/* chevron Icon if submenu was true */}
           <span
-            className={`text-sm text-gray-600 ${open ? "block" : "hidden"} `}
+            className={`transition-transform ${
+              open ? "block" : "hidden"
+            } duration-300 lg:block ${openMenus[item.id] ? "rotate-180" : ""}`}
           >
-            {item.title}
+            <IoChevronDown
+              className={`text-gray-400 ${open ? "block" : "hidden"}`}
+            />
           </span>
         </div>
-        {/* chevron Icon if submenu was true */}
-        <span
-          className={`transition-transform ${
-            open ? "block" : "hidden"
-          } duration-300 lg:block ${openMenus[item.id] ? "rotate-180" : ""}`}
-        >
-          <IoChevronDown className="text-gray-400" />
-        </span>
+        {/* {<Tooltip title={item?.title} />} */}
       </div>
       {/* sub-menu */}
       <ul

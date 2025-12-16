@@ -10,11 +10,11 @@ function App() {
         path="/"
         element={
           <AppLayout>
+            {/* laptop screen */}
             <SidebarMenu menu={menuItems} />
           </AppLayout>
         }
       >
-        <Route path="/setting" element={<div> setting</div>} />
       </Route>
     </Routes>
   );

@@ -9,7 +9,7 @@
     @apply hover:bg-gray-100 transition-all p-1 rounded-full;
   }
 }
-/* Habmurger Menu btn Style⬇︎*/
+/*? Habmurger Menu btn Style ⬇︎*/
 .label-check {
   display: none;
 }
