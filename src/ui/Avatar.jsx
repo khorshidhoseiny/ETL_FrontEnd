@@ -11,7 +11,7 @@ function Avatar({ Img, name, Role }) {
       </div>
       <img
         src={Img}
-        className="w-12 h-12  rounded-full ring-1 ring-gray-300"
+        className="w-14 h-14 rounded-full ring ring-gray-300"
         alt="profile"
       />
     </div>
