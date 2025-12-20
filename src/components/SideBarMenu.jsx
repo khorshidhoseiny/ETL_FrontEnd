@@ -1,6 +1,7 @@
 import { useState } from "react";
-import ToggleMenuBtn from "../ui/ToggleMenuBtn";
+
 import useIsMobile from "../hooks/useIsMobile";
+import { CgClose, CgMenu } from "react-icons/cg";
 import MenuItems from "./MenuItems";
 
 export default function SidebarMenu({ menu }) {
@@ -11,9 +12,9 @@ export default function SidebarMenu({ menu }) {
       {/* //? just in md and grater than screen */}
       {!ismobile && (
         <div
-          className={`${open ? "w-64" : "w-18"}  transition-all  duration-300`}
+          className={`${open ? "w-64" : "w-18"} transition-all  duration-300`}
         >
-          <div className="flex  w-full border-b lg:border-0 border-gray-200 p-3 justify-between items-center ">
+          <div className="flex w-full border-b mt-2  border-gray-200 p-3 justify-between items-center ">
             <div
               className={`flex ${
                 open ? "block" : "hidden"
@@ -24,20 +25,24 @@ export default function SidebarMenu({ menu }) {
                 className="h-full shadow rounded-xl"
                 alt=""
               />
-              <h1 className=" font-semibold text-primary-700">
+              <h1 className="font-semibold text-primary-700">
                 ETL
-                <span className="w-12 h-12 ml-2 p-2 mr-7 rounded-lg bg-gray-300 text-sm text-gray-500">
+                <span className="w-12 h-12 ml-2 p-2 mr-7 text-xs rounded-lg bg-gray-200 text-gray-500">
                   logo
                 </span>
               </h1>
             </div>
             <button
               onClick={() => setOpen(!open)}
-              className={`flex p-3 ${
+              className={`flex p-2 ${
                 !open ? "mx-auto" : ""
-              } transition-all icon-button rounded-lg w-10 cursor-pointer hover:bg-primary-50`}
+              } transition-all icon-button  justify-center text-gray-500 items-center rounded-lg w-10 cursor-pointer hover:text-blue-700 hover:bg-blue-50`}
             >
-              <ToggleMenuBtn open={open} />
+              {open ? (
+                <CgClose className="w-6 h-6  text-current" />
+              ) : (
+                <CgMenu className="w-6 h-6  text-current" />
+              )}
             </button>
           </div>
           <MenuItems setOpen={setOpen} open={open} menu={menu} />

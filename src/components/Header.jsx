@@ -5,26 +5,47 @@ import { Link } from "react-router-dom";
 import { IoMdNotificationsOutline } from "react-icons/io";
 import { AiOutlineSetting } from "react-icons/ai";
 import Tooltip from "../ui/Tooltip";
+import Drawer from "../ui/Drawer";
+import { CgMenu } from "react-icons/cg";
+import MenuItems from "./MenuItems";
+import { menuItems } from "../lib/data";
 
 function Header() {
-
+  const [openDrawer, setOpenDrawer] = useState(false);
   return (
-    <div className="mx-auto p-3 px-5 w-full">
-      <div className=" flex bg-white  justify-between items-center">
+    <div className=" p-3 px-4 w-full">
+      {/* <div className=" flex bg-white  justify-between items-center">
+        <SearchInput /> */}
+      <div className="   flex justify-between items-center">
+        <div className="flex justify-center items-center gap-x-3">
+          <button
+            onClick={() => setOpenDrawer(!openDrawer)}
+            className="md:hidden block p-3  icon-button cursor-pointer"
+          >
+            <CgMenu className="w-6 h-6 text-gray-500" />
+          </button>
+          <Drawer open={openDrawer} onClose={() => setOpenDrawer(false)}>
+            <MenuItems
+              open={openDrawer}
+              setOpen={setOpenDrawer}
+              menu={menuItems}
+            />
+          </Drawer>
           <SearchInput />
+        </div>
         <div className="flex space-x-2">
           {/* actions */}
           <div className="flex justify-center items-center gap-x-2">
-            <Link to={"/notifications"} className="group relative icon-button ">
-              <span className="absolute inline-flex w-3 h-3 -top-1 right-1 -bottom-0.5  animate-ping rounded-full bg-red-400 opacity-100" />
-              <span className="absolute inline-flex -top-1 right-1 -bottom-0.5 h-3 w-3 items-center justify-center rounded-full bg-red-400 p-0.5 text-[10px] font-bold text-white">
+            <Link to={"/notification"} className="group relative icon-button ">
+              <span className="absolute inline-flex w-4 h-4 -top-1 -right-1 -bottom-0.5 animate-ping rounded-full bg-blue-400 opacity-100" />
+              <span className="absolute inline-flex -top-1 -right-1 -bottom-0.5 h-4 w-4 items-center justify-center rounded-full bg-blue-400 p-0.5 text-[10px] font-bold text-white">
                 3
               </span>
               <IoMdNotificationsOutline className="w-6 text-gray-500 group-hover:bg-opacity-0 h-6" />
               <Tooltip show={true} title={"اعلان ها"} />
             </Link>
             <Link to={"/setting"} className="group icon-button relative">
-              <AiOutlineSetting className="w-6 text-gray-500 group-hover:bg-opacity-0  h-6" />
+              <AiOutlineSetting className="w-6 text-gray-500 group-hover:bg-opacity-0 h-6" />
               <Tooltip show={true} title={"تنظیمات"} />
             </Link>
           </div>

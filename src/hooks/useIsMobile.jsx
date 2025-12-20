@@ -5,7 +5,9 @@ export default function useIsMobile(breakpoint = 425) {
 
   useEffect(() => {
     const checkScreen = () => {
-      setIsMobile(window.innerWidth <= breakpoint);
+      setIsMobile(
+        window.innerWidth === breakpoint || window.innerWidth < breakpoint
+      );
     };
 
     checkScreen();

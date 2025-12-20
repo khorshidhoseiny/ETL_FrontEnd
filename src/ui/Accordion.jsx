@@ -14,20 +14,18 @@ function Accordion({ open, item }) {
   };
   return (
     <>
-      <div
+      <NavLink
         onClick={() => toggleMenu(item.id)}
-        className={`flex rounded-lg w-full hover:bg-gray-100 relative  items-center gap-x-2 p-2   cursor-pointer`}
+        className={`flex rounded-lg w-full hover:text-blue-700 text-gray-500  hover:fill-blue-700 hover:bg-blue-100/50 relative  items-center gap-x-2 p-2 px-4 cursor-pointer`}
       >
         <div
           className={`flex ${
             open ? "justify-between" : "justify-center"
           } w-full items-center `}
         >
-          <div className="flex gap-x-2 relative items-center">
-            <Icon className="w-5 h-5 fill-gray-600" />
-            <span
-              className={`text-sm text-gray-600 ${open ? "block" : "hidden"} `}
-            >
+          <div className="flex gap-x-2    relative items-center">
+            <Icon className="w-5 h-5  fill-current" />
+            <span className={`text-sm  ${open ? "block" : "hidden"} `}>
               {item.title}
             </span>
           </div>
@@ -43,17 +41,17 @@ function Accordion({ open, item }) {
           </span>
         </div>
         {/* {<Tooltip title={item?.title} />} */}
-      </div>
+      </NavLink>
       {/* sub-menu */}
       <ul
         className={`${
-          openMenus[item.id] && open ? " block " : "hidden"
-        }  mr-10 w-full border-r-2  border-gray-200 transition-all duration-200 text-sm`}
+          openMenus[item.id] && open ? " flex " : "opacity-0"
+        }    border-r-2 mr-9 border-gray-200 overflow-hidden  w-full flex justify-start transition-all ease-in flex-col items-start  duration-200 text-sm`}
       >
         {item.submenu.map((subm, index) => {
           return (
-            <NavLink key={index} to={subm.link}>
-              <li className="cursor-pointer p-3  hover:bg-primary-50/60 w-full whitespace-nowrap hover:text-primary-600">
+            <NavLink key={index} to={subm.link} className=" w-full ">
+              <li className="cursor-pointer p-2    hover:bg-blue-50 whitespace-nowrap hover:text-blue-700">
                 {subm.title}
               </li>
             </NavLink>
